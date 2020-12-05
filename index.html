@@ -7,8 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <title>The Ceasar Cipher Wheel</title>
 
-  <link rel="stylesheet" href="style.css">
-   <link rel="stylesheet" href="https://github.com/bencepiatrik/ceasar_cipher_wheel/blob/master/style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <div class="container">
@@ -173,7 +172,8 @@
       </li>
     </div>
     <div class="hide-wheel"></div>
-    <div class="inner-wheel">
+    <div onmousemove="m(event)" class="inner-wheel">
+     
       <li>
         <div class="char">
         <p>A</p>
@@ -330,12 +330,13 @@
       </div>
         <div class="slice"></div>
       </li>
+      <div class="scroll">scroll</div>
   <div class="wheel-center">
    
   </div>
     </div>
     <div class="key-info">
-      <h1>Add your key: <br> <input type="text" class="key"></h1>
+      <h1>Enter the key: <br> <input placeholder="0" type="number" class="key"> <br>  Or scroll</h1>
     </div>
   </div>
   <div class="container-2">
@@ -360,8 +361,6 @@
   </div>
 
 
-  <script src="main.js"></script>
-  
-  <script src="https://github.com/bencepiatrik/ceasar_cipher_wheel/blob/master/main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>   
