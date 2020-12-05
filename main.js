@@ -1,19 +1,21 @@
 const outerWheel = document.querySelector('.outer-wheel');
 const innerWheel = document.querySelector('.inner-wheel');
 const centerWheel = document.querySelector('.wheel-center');
+const hideWheel = document.querySelector('.hide-wheel');
 const container = document.querySelector('.container')
 const box = document.querySelector('.box')
 let key = document.querySelector('.key');
 const body = document.querySelector('body')
+
+let counter = 0
+
 key.addEventListener('input', function(e){
   let key = e.target.value
   outerWheel.style.transform = `translate(-50%, -50%) rotate(0deg)`
   innerWheel.style.transform =  `translate(-50%, -50%) rotate(${key * 13.84615}deg)`
   centerWheel.style.transform = `translate(-50%, -50%) rotate(0deg) rotate(${key * -13.84615}deg)`
+  counter = key
 })
-
-
-
 
 let shift = 0
 let shift2 = 0
@@ -93,3 +95,45 @@ codedStr= codedStr.substr(codedStr.length - str2.length)
 const revealedText = document.querySelector('.revealed-text')
 revealedText.innerHTML = codedStr
 }
+
+innerWheel.addEventListener('wheel', (e) => {
+  let Y = e.deltaY 
+  if(Y < 0 ) {
+    counter = counter + 13.84615
+  innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1.1)`
+  innerWheel.addEventListener('mouseenter', function() {
+    innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1.1)`
+    hideWheel.style.transform = 'translate(-50%, -50%) scale(1.1)'
+  })
+  innerWheel.addEventListener('mouseleave', function() {
+    hideWheel.style.transform = 'translate(-50%, -50%) scale(1)'
+    innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1)`
+  })
+  }
+
+  if(Y > 0 ) {
+    counter = counter - 13.84615
+  innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1.1)`
+  innerWheel.addEventListener('mouseenter', function() {
+    hideWheel.style.transform = 'translate(-50%, -50%) scale(1.1)'  
+    innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1.1)`
+  })
+  innerWheel.addEventListener('mouseleave', function() {
+    hideWheel.style.transform = 'translate(-50%, -50%) scale(1)'
+    innerWheel.style.transform = `translate(-50%, -50%) rotate3d(0,0,1, ${counter}deg) scale(1)`
+  })
+  }
+  let encryptKey = counter / 13.84615
+  key.value = Math.round(encryptKey)
+})
+ innerWheel.addEventListener('mouseenter', function() {
+  hideWheel.style.transform = 'translate(-50%, -50%) scale(1.1)'
+  hideWheel.style.boxShadow = '0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)'
+  innerWheel.style.transform = 'translate(-50%, -50%) scale(1.1)'
+})
+ innerWheel.addEventListener('mouseleave', function() {
+  hideWheel.style.transform = 'translate(-50%, -50%) scale(1)'
+  hideWheel.style.boxShadow = 'none'
+  innerWheel.style.transform = 'translate(-50%, -50%) scale(1)'
+
+})
