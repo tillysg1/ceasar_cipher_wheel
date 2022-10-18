@@ -12,8 +12,8 @@ let counter = 0
 key.addEventListener('input', function(e){
   let key = e.target.value
   outerWheel.style.transform = `translate(-50%, -50%) rotate(0deg)`
-  innerWheel.style.transform =  `translate(-50%, -50%) rotate(${key * 13.84615}deg)`
-  centerWheel.style.transform = `translate(-50%, -50%) rotate(0deg) rotate(${key * -13.84615}deg)`
+  innerWheel.style.transform =  `translate(-50%, -50%) rotate(${key * 30}deg)`
+  centerWheel.style.transform = `translate(-50%, -50%) rotate(0deg) rotate(${key * -30}deg)`
   counter = key
 })
 
